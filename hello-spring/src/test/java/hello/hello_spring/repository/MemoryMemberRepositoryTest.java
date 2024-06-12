@@ -1,14 +1,14 @@
 package hello.hello_spring.repository;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import hello.hello_spring.domain.Member;
+import java.util.List;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.List;
-
-import static org.assertj.core.api.Assertions.assertThat;
-
 public class MemoryMemberRepositoryTest {
+
   MemoryMemberRepository repository = new MemoryMemberRepository();
 
   @AfterEach
