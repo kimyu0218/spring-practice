@@ -3,6 +3,7 @@ package hello.hello_spring.service;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import hello.hello_spring.SpringTestConfig;
 import hello.hello_spring.domain.Member;
 import hello.hello_spring.repository.MemberRepository;
 import java.util.ArrayList;
@@ -12,7 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
-@SpringBootTest
+@SpringBootTest(classes = SpringTestConfig.class, properties = "spring.config.location=classpath:application-test.properties")
 @Transactional
 class MemberServiceIntegrationTest {
 
