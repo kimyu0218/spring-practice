@@ -27,6 +27,7 @@ public class SpringConfig {
 
   @Autowired
   public SpringConfig(MemberRepository memberRepository) {
+    System.out.println("This is SpringConfig");
     this.memberRepository = memberRepository;
   }
 
