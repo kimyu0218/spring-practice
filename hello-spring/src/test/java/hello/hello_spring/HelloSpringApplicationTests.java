@@ -2,9 +2,10 @@ package hello.hello_spring;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 
-@SpringBootTest(classes = SpringTestConfig.class, properties = "spring.config.location=classpath:application-test.properties")
-//@ActiveProfiles("test")
+@SpringBootTest(classes = SpringIntegrationTestConfig.class, properties = "spring.config.location=classpath:application-test.properties")
+@ActiveProfiles("integration")
 class HelloSpringApplicationTests {
 
   @Test
