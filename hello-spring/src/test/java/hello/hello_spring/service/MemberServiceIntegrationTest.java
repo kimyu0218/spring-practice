@@ -3,33 +3,45 @@ package hello.hello_spring.service;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import hello.hello_spring.SpringIntegrationTestConfig;
+import hello.hello_spring.config.SpringIntegrationTestConfig;
 import hello.hello_spring.domain.Member;
 import hello.hello_spring.repository.MemberRepository;
+import jakarta.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.FilterType;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 //@SpringBootTest(classes = SpringIntegrationTestConfig.class, properties = "spring.config.location=classpath:application-test.properties")
 //@ExtendWith(SpringExtension.class)
 //@ContextConfiguration(classes = SpringIntegrationTestConfig.class)
 @SpringJUnitConfig(classes = SpringIntegrationTestConfig.class)
 @TestPropertySource(locations = "classpath:application-test.properties")
+@ComponentScan(
+    basePackages = "hello.hello_spring",
+    excludeFilters = @ComponentScan.Filter(
+        type = FilterType.ASPECTJ,
+        pattern = {"hello.hello_spring.config.*", "hello.hello_spring.*Application"}))
 @EnableAutoConfiguration
-@ComponentScan(basePackages = "hello.hello_spring")
+@EnableJpaRepositories(basePackages = "hello.hello_spring.repository")
+@EntityScan(basePackages = "hello.hello_spring.domain")
+@EnableTransactionManagement
 @ActiveProfiles("integration")
 @Transactional
 class MemberServiceIntegrationTest {
 
   @Autowired
   MemberService memberService;
+
   @Autowired
   MemberRepository memberRepository;
 

@@ -1,5 +1,6 @@
 package hello.hello_spring;
 
+import hello.hello_spring.config.SpringIntegrationTestConfig;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
