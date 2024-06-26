@@ -12,11 +12,13 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
 //@ExtendWith(SpringExtension.class)
 //@ContextConfiguration(classes = SpringTestConfig.class)
 @SpringJUnitConfig(classes = SpringTestConfig.class)
+@TestPropertySource(locations = "classpath:application-test.properties")
 @ActiveProfiles("member")
 @Transactional
 class MemberServiceIntegrationTest {
