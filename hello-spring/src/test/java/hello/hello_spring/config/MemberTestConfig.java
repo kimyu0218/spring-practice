@@ -4,18 +4,16 @@ import hello.hello_spring.repository.MemberRepository;
 import hello.hello_spring.service.MemberService;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Profile;
 
-@TestConfiguration
-@Profile("integration")
-public class SpringIntegrationTestConfig {
+@Profile("member")
+public class MemberTestConfig {
 
   private final MemberRepository memberRepository;
 
   @Autowired
-  public SpringIntegrationTestConfig(MemberRepository memberRepository) {
+  public MemberTestConfig(MemberRepository memberRepository) {
     this.memberRepository = memberRepository;
   }
 
